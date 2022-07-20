@@ -1,4 +1,10 @@
-function Favourites(): JSX.Element {
+import IOffer from '../../interfaces/IOffer';
+
+type FavouritesProps = {
+  offersFavourites: IOffer[]
+};
+
+function Favourites({ offersFavourites }: FavouritesProps): JSX.Element {
   return (
     <div className="page">
       <header className="header">

@@ -1,4 +1,4 @@
-import Offer from '../../interfaces/Offer';
+import Offer from '../../interfaces/IOffer';
 
 import RoomCard from '../room-card/room-card';
 
@@ -7,7 +7,6 @@ type RoomCardListProps = {
 };
 
 function RoomCardList({ offers }: RoomCardListProps): JSX.Element {
-  { console.log(offers) }
   return (
     <>
       { offers.map((offer) => {

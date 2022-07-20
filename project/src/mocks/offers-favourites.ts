@@ -1,15 +1,6 @@
 import IOffer from "../interfaces/IOffer";
 
-export const offers: IOffer[] = [
-  {
-    id: 1,
-    name: 'Beautiful & luxurious apartment at great location',
-    price: 200,
-    premium: true,
-    mainImageSrc: 'img/apartment-01.jpg',
-    category: 'Apartment',
-    city: 'Amsterdam',
-  },
+export const offersFavourites: IOffer[] = [
   {
     id: 2,
     name: 'Wonderful apartment',
@@ -29,21 +20,21 @@ export const offers: IOffer[] = [
     city: 'Amsterdam',
   },
   {
-    id: 4,
+    id: 6,
     name: 'Art hotel',
     price: 180,
     premium: true,
     mainImageSrc: 'img/apartment-01.jpg',
     category: 'Apartment',
-    city: 'Amsterdam',
+    city: 'Cologne',
   },
   {
-    id: 5,
+    id: 7,
     name: 'Camping in the woods',
     price: 50,
     premium: false,
     mainImageSrc: 'img/apartment-02.jpg',
-    category: 'Camping',
-    city: 'Amsterdam'
+    category: 'Hotel',
+    city: 'Cologne',
   }
 ];

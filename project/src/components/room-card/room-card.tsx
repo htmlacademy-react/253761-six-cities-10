@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import Offer from '../../interfaces/Offer';
+import Offer from '../../interfaces/IOffer';
 
 type RoomCardProps = {
   offer: Offer,

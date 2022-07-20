@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthStatus } from '../../const';
-import Offer from '../../interfaces/Offer';
+import IOffer from '../../interfaces/IOffer';
 
 import Main from '../../pages/main/main';
 import Room from '../../pages/room/room';
@@ -10,10 +10,11 @@ import NotFound from '../../pages/not-found/not-found';
 import PrivateRoot from '../private-root/private-root';
 
 type AppProps = {
-  offers: Offer[]
+  offers: IOffer[],
+  offersFavourites: IOffer[]
 };
 
-function App({ offers }: AppProps): JSX.Element {
+function App({ offers, offersFavourites }: AppProps): JSX.Element {
   return(
     <BrowserRouter>
       <Routes>
@@ -21,7 +22,7 @@ function App({ offers }: AppProps): JSX.Element {
           <Route index element={<Main offers={offers} />} />
           <Route path="favourites" element={
             <PrivateRoot authStatus={AuthStatus.Auth}>
-              <Favourites />
+              <Favourites offersFavourites={offersFavourites} />
             </PrivateRoot>
           }
           />

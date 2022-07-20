@@ -1,9 +1,9 @@
-import Offer from '../../interfaces/Offer';
+import IOffer from '../../interfaces/IOffer';
 
 import RoomCardList from '../../components/room-card-list/room-card-list';
 
 type MainProps = {
-  offers: Offer[]
+  offers: IOffer[]
 };
 
 function Main({ offers }: MainProps): JSX.Element {
