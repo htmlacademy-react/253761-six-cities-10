@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthStatus } from '../../const';
+import Offer from '../../interfaces/Offer';
 
 import Main from '../../pages/main/main';
 import Room from '../../pages/room/room';
@@ -8,14 +9,18 @@ import Login from '../../pages/login/login';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoot from '../private-root/private-root';
 
-function App(): JSX.Element {
+type AppProps = {
+  offers: Offer[]
+};
+
+function App({ offers }: AppProps): JSX.Element {
   return(
     <BrowserRouter>
       <Routes>
         <Route path='/'>
-          <Route index element={<Main placesFound={999} />} />
+          <Route index element={<Main offers={offers} />} />
           <Route path="favourites" element={
-            <PrivateRoot authStatus={AuthStatus.NoAuth}>
+            <PrivateRoot authStatus={AuthStatus.Auth}>
               <Favourites />
             </PrivateRoot>
           }

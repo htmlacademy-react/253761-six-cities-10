@@ -1,10 +1,12 @@
-import RoomCard from '../../components/room-card/room-card';
+import Offer from '../../interfaces/Offer';
+
+import RoomCardList from '../../components/room-card-list/room-card-list';
 
 type MainProps = {
-  placesFound: number,
+  offers: Offer[]
 };
 
-function Main({placesFound}: MainProps): JSX.Element {
+function Main({ offers }: MainProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -78,7 +80,7 @@ function Main({placesFound}: MainProps): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{placesFound} places to stay in Amsterdam</b>
+              <b className="places__found">57 places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -87,7 +89,7 @@ function Main({placesFound}: MainProps): JSX.Element {
                     <use xlinkHref="#icon-arrow-select"></use>
                   </svg>
                 </span>
-                <ul className="places__options places__options--custom places__options--opened">
+                <ul className="places__options places__options--custom"> {/* places__options--opened */}
                   <li className="places__option places__option--active" tabIndex={0}>Popular</li>
                   <li className="places__option" tabIndex={0}>Price: low to high</li>
                   <li className="places__option" tabIndex={0}>Price: high to low</li>
@@ -95,11 +97,7 @@ function Main({placesFound}: MainProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <RoomCard />
-                <RoomCard />
-                <RoomCard />
-                <RoomCard />
-                <RoomCard />
+                <RoomCardList offers={offers} />
               </div>
             </section>
             <div className="cities__right-section">
