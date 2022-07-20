@@ -32,7 +32,6 @@ function RoomForm() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    console.log(formData);
   };
 
   const { rating, review } = formData;

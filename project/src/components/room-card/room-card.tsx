@@ -4,11 +4,15 @@ import Offer from '../../interfaces/IOffer';
 
 type RoomCardProps = {
   offer: Offer,
+  changeActiveCard: Function
 };
 
-function RoomCard({ offer }: RoomCardProps): JSX.Element {
+function RoomCard({ offer, changeActiveCard }: RoomCardProps): JSX.Element {
   return (
-    <article className="cities__card place-card">
+    <article 
+      className="cities__card place-card"
+      onMouseOver={() => { console.log(offer.id); changeActiveCard(offer.id); }}
+    >
       {offer.premium && 
         <div className="place-card__mark">
           <span>Premium</span>

@@ -5,6 +5,13 @@ type FavouritesProps = {
 };
 
 function Favourites({ offersFavourites }: FavouritesProps): JSX.Element {
+  // console.log(offersFavourites)
+  // const offersFavouritesOrdered = offersFavourites.reduce((acc, offer) => {
+  //   if (offer.city in acc) {
+  //     acc[offer.city] = {}
+  //   }
+  //   return {...acc, offer};
+  // }, {});
   return (
     <div className="page">
       <header className="header">
