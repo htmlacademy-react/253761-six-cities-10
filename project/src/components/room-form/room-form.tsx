@@ -6,13 +6,14 @@ function RoomForm() {
     review: ''
   });
 
-  //const [submitDisabled, setSubmitDisabled] = useState(true);
+  const [submitDisabled, setSubmitDisabled] = useState(true);
 
   const handleChangeRating = (e: ChangeEvent<HTMLInputElement>): void => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+    checkSubmitDisabled();
   };
 
   const handleChangeReview = (e: ChangeEvent<HTMLTextAreaElement>): void => {
@@ -20,18 +21,20 @@ function RoomForm() {
       ...formData,
       [e.target.name]: e.target.value
     });
+    checkSubmitDisabled();
   };
 
-  // const checkSubmitDisabled = () => {
-  //   if (formData.rating.length > 0 && formData.review.length >= 50) {
-  //     setSubmitDisabled(false);
-  //   } else {
-  //     setSubmitDisabled(true);
-  //   }
-  // };
+  const checkSubmitDisabled = () => {
+    if (formData.rating.length > 0 && formData.review.length >= 50) {
+      setSubmitDisabled(false);
+    } else {
+      setSubmitDisabled(true);
+    }
+  };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+    console.log(formData, submitDisabled);
   };
 
   const { rating, review } = formData;
@@ -90,8 +93,8 @@ function RoomForm() {
         <button 
           className="reviews__submit form__submit button" 
           type="submit"
-          // disabled={submitDisabled}
-          >Submit</button>
+          disabled={submitDisabled}
+        >Submit</button>
       </div>
     </form>
   )
