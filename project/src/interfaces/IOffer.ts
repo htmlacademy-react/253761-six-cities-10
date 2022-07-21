@@ -1,4 +1,4 @@
-export default interface IOffer {
+interface IOffer {
   id: number,
   name: string,
   price: number,
@@ -10,4 +10,6 @@ export default interface IOffer {
   favourite: boolean,
   bedrooms: number,
   maxPeople: number,
-};
+}
+
+export default IOffer;
