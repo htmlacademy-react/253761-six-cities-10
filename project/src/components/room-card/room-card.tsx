@@ -9,15 +9,14 @@ type RoomCardProps = {
 
 function RoomCard({ offer, changeActiveCard }: RoomCardProps): JSX.Element {
   return (
-    <article 
+    <article
       className="cities__card place-card"
-      onMouseOver={() => { console.log(offer.id); changeActiveCard(offer.id); }}
+      onMouseOver={() => { changeActiveCard(offer.id); }}
     >
-      {offer.premium && 
+      {offer.premium &&
         <div className="place-card__mark">
           <span>Premium</span>
-        </div>
-      }
+        </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={`offer/${offer.id}`}>
           <img className="place-card__image" src={offer.mainImageSrc} width="260" height="200" alt="Place image" />

@@ -16,10 +16,9 @@ function RoomCardList({ offers }: RoomCardListProps): JSX.Element {
 
   return (
     <>
-      { console.log('activeCardId', activeCardId) }
-      { offers.map((offer) => {
-        return <RoomCard key={offer.id} offer={offer} changeActiveCard={changeActiveCard} />
-      }) }
+      { offers.map((offer) =>
+        <RoomCard key={offer.id} offer={offer} changeActiveCard={changeActiveCard} />
+      )}
     </>
   );
 }

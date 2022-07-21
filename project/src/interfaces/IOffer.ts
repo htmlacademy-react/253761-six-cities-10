@@ -9,5 +9,4 @@ export default interface IOffer {
   city: string,
   favourite: boolean,
   bedrooms: number,
-  maxPeople: number,
-}
+  maxPeople: number};

@@ -10,9 +10,9 @@ type RoomRtype = {
 
 function Room({ offers }: RoomRtype): JSX.Element {
   const id = Number(useParams().id);
-  const room = offers.find(item => item.id === id);
+  const room = offers.find((item) => item.id === id);
   if (room === undefined) {
-    return <NotFound />
+    return <NotFound />;
   }
 
   return (
@@ -22,7 +22,7 @@ function Room({ offers }: RoomRtype): JSX.Element {
           <div className="header__wrapper">
             <div className="header__left">
               <a className="header__logo-link" href="main.html">
-                <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
+                <img className="header__logo" src="img/logo.svg" width="81" height="41" />
               </a>
             </div>
             <nav className="header__nav">
@@ -51,19 +51,19 @@ function Room({ offers }: RoomRtype): JSX.Element {
           <div className="property__gallery-container container">
             <div className="property__gallery">
               <div className="property__image-wrapper">
-                <img className="property__image" src="img/room.jpg" alt="Photo studio" />
+                <img className="property__image" src="img/room.jpg" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio" />
+                <img className="property__image" src="img/apartment-01.jpg" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-02.jpg" alt="Photo studio" />
+                <img className="property__image" src="img/apartment-02.jpg" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-03.jpg" alt="Photo studio" />
+                <img className="property__image" src="img/apartment-03.jpg" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src="img/studio-01.jpg" alt="Photo studio" />
+                <img className="property__image" src="img/studio-01.jpg" />
               </div>
               <div className="property__image-wrapper">
                 <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio" />
@@ -72,11 +72,10 @@ function Room({ offers }: RoomRtype): JSX.Element {
           </div>
           <div className="property__container container">
             <div className="property__wrapper">
-              {room.premium && 
+              {room.premium &&
               <div className="property__mark">
                 <span>Premium</span>
-              </div>
-              }
+              </div>}
               <div className="property__name-wrapper">
                 <h1 className="property__name">
                   { room.name }

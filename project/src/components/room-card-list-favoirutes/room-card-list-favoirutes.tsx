@@ -7,15 +7,15 @@ type RoomCardListFavouritesProps = {
 };
 
 function RoomCardListFavourites({ offers }: RoomCardListFavouritesProps): JSX.Element {
-  const offersFavourites = offers.filter((item) => {
-    return item.favourite === true;
-  });
+  const offersFavourites = offers.filter((item) =>
+    item.favourite === true
+  );
 
   return (
     <div className="favorites__places">
-      { offersFavourites.map((offer) => {
-        return <RoomCardFavourites key={offer.id} offer={offer} />
-      }) }
+      { offersFavourites.map((offer) =>
+        <RoomCardFavourites key={offer.id} offer={offer} />
+      )}
     </div>
   );
 }

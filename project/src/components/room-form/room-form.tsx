@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent } from 'react';
 
 function RoomForm() {
   const [formData, setFormData] = useState({
@@ -34,13 +34,12 @@ function RoomForm() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    console.log(formData, submitDisabled);
   };
 
-  const { rating, review } = formData;
+  const { review } = formData;
 
   return (
-    <form 
+    <form
       className="reviews__form form"
       action="#"
       method="post"
@@ -79,25 +78,28 @@ function RoomForm() {
           </svg>
         </label>
       </div>
-      <textarea 
-        className="reviews__textarea form__textarea" 
-        id="review" name="review" 
+      <textarea
+        className="reviews__textarea form__textarea"
+        id="review" name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
         value={review}
-        onChange={handleChangeReview}>
+        onChange={handleChangeReview}
+      >
       </textarea>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
-        <button 
-          className="reviews__submit form__submit button" 
+        <button
+          className="reviews__submit form__submit button"
           type="submit"
           disabled={submitDisabled}
-        >Submit</button>
+        >
+          Submit
+        </button>
       </div>
     </form>
-  )
+  );
 }
 
 export default RoomForm;

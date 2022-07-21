@@ -1,4 +1,4 @@
-import IOffer from "../interfaces/IOffer";
+import IOffer from '../interfaces/IOffer';
 
 export const offers: IOffer[] = [
   {
