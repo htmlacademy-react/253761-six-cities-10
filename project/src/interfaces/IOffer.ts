@@ -4,6 +4,10 @@ export default interface IOffer {
   price: number,
   premium: boolean,
   mainImageSrc: string,
+  rating: number,
   category: string,
-  city: string
+  city: string,
+  favourite: boolean,
+  bedrooms: number,
+  maxPeople: number,
 }

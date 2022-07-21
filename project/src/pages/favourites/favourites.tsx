@@ -1,10 +1,10 @@
 import IOffer from '../../interfaces/IOffer';
 
 type FavouritesProps = {
-  offersFavourites: IOffer[]
+  offers: IOffer[]
 };
 
-function Favourites({ offersFavourites }: FavouritesProps): JSX.Element {
+function Favourites({ offers }: FavouritesProps): JSX.Element {
   // console.log(offersFavourites)
   // const offersFavouritesOrdered = offersFavourites.reduce((acc, offer) => {
   //   if (offer.city in acc) {

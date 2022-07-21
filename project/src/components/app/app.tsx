@@ -10,11 +10,10 @@ import NotFound from '../../pages/not-found/not-found';
 import PrivateRoot from '../private-root/private-root';
 
 type AppProps = {
-  offers: IOffer[],
-  offersFavourites: IOffer[]
+  offers: IOffer[]
 };
 
-function App({ offers, offersFavourites }: AppProps): JSX.Element {
+function App({ offers }: AppProps): JSX.Element {
   return(
     <BrowserRouter>
       <Routes>
@@ -22,13 +21,13 @@ function App({ offers, offersFavourites }: AppProps): JSX.Element {
           <Route index element={<Main offers={offers} />} />
           <Route path="favourites" element={
             <PrivateRoot authStatus={AuthStatus.Auth}>
-              <Favourites offersFavourites={offersFavourites} />
+              <Favourites offers={offers} />
             </PrivateRoot>
           }
           />
-          <Route path="offer/:id" element={<Room />} />
+          <Route path="offer/:id" element={<Room offers={offers} />} />
           <Route path="login" element={<Login />} />
-          <Route path="*" element={<NotFound />} />
+          <Route element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

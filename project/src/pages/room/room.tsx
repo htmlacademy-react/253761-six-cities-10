@@ -1,6 +1,20 @@
-import RoomForm from '../../components/room-form/room-form';
+import { useParams } from 'react-router-dom';
+import IOffer from '../../interfaces/IOffer';
 
-function Room(): JSX.Element {
+import RoomForm from '../../components/room-form/room-form';
+import NotFound from '../not-found/not-found';
+
+type RoomRtype = {
+  offers: IOffer[]
+};
+
+function Room({ offers }: RoomRtype): JSX.Element {
+  const id = Number(useParams().id);
+  const room = offers.find(item => item.id === id);
+  if (room === undefined) {
+    return <NotFound />
+  }
+
   return (
     <div className="page">
       <header className="header">
@@ -58,12 +72,14 @@ function Room(): JSX.Element {
           </div>
           <div className="property__container container">
             <div className="property__wrapper">
+              {room.premium && 
               <div className="property__mark">
                 <span>Premium</span>
               </div>
+              }
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  Beautiful &amp; luxurious studio at great location
+                  { room.name }
                 </h1>
                 <button className="property__bookmark-button button" type="button">
                   <svg className="property__bookmark-icon" width="31" height="33">
@@ -77,21 +93,21 @@ function Room(): JSX.Element {
                   <span style={{width: '80%'}}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">4.8</span>
+                <span className="property__rating-value rating__value">{ room.rating }</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  Apartment
+                  { room.category }
                 </li>
                 <li className="property__feature property__feature--bedrooms">
-                  3 Bedrooms
+                  { room.bedrooms } Bedrooms
                 </li>
                 <li className="property__feature property__feature--adults">
-                  Max 4 adults
+                  Max { room.maxPeople } adults
                 </li>
               </ul>
               <div className="property__price">
-                <b className="property__price-value">&euro;120</b>
+                <b className="property__price-value">&euro;{ room.price }</b>
                 <span className="property__price-text">&nbsp;night</span>
               </div>
               <div className="property__inside">
