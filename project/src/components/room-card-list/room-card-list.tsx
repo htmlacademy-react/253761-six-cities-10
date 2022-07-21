@@ -8,9 +8,9 @@ type RoomCardListProps = {
 };
 
 function RoomCardList({ offers }: RoomCardListProps): JSX.Element {
-  const [activeCardId, setActiveCardId] = useState(0);
+  const [, setActiveCardId] = useState(0);
 
-  const changeActiveCard = (id: number) : void=> {
+  const changeActiveCard = (id: number): void => {
     setActiveCardId(id);
   };
 

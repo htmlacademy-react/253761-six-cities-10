@@ -4,7 +4,7 @@ import Offer from '../../interfaces/IOffer';
 
 type RoomCardProps = {
   offer: Offer,
-  changeActiveCard: Function
+  changeActiveCard: (id: number) => void
 };
 
 function RoomCard({ offer, changeActiveCard }: RoomCardProps): JSX.Element {
