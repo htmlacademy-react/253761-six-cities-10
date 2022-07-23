@@ -32,12 +32,12 @@ export const offers: IOffer[] = [
     },
     id: 1,
     images: [
-      'img/apartament-01.jpg',
-      'img/apartament-02.jpg',
-      'img/apartament-03.jpg',
-      'img/apartament-01.jpg',
-      'img/apartament-02.jpg',
-      'img/apartament-03.jpg'
+      'img/apartment-01.jpg',
+      'img/apartment-02.jpg',
+      'img/apartment-03.jpg',
+      'img/apartment-011.jpg',
+      'img/apartment-022.jpg',
+      'img/apartment-033.jpg'
     ],
     isFavorite: true,
     isPremium: false,
@@ -49,7 +49,7 @@ export const offers: IOffer[] = [
     maxAdults: 3,
     previewImage: 'img/room.jpg',
     price: 120,
-    rating: 5,
+    rating: 2,
     title: '111 Cozy flat in the centre',
     type: 'Apartment'
   },
@@ -84,12 +84,12 @@ export const offers: IOffer[] = [
     },
     id: 2,
     images: [
-      'img/apartament-01.jpg',
-      'img/apartament-02.jpg',
-      'img/apartament-03.jpg',
-      'img/apartament-01.jpg',
-      'img/apartament-02.jpg',
-      'img/apartament-03.jpg'
+      'img/apartment-01.jpg',
+      'img/apartment-02.jpg',
+      'img/apartment-03.jpg',
+      'img/apartment-011.jpg',
+      'img/apartment-022.jpg',
+      'img/apartment-033.jpg'
     ],
     isFavorite: false,
     isPremium: true,
@@ -136,12 +136,12 @@ export const offers: IOffer[] = [
     },
     id: 3,
     images: [
-      'img/apartament-01.jpg',
-      'img/apartament-02.jpg',
-      'img/apartament-03.jpg',
-      'img/apartament-01.jpg',
-      'img/apartament-02.jpg',
-      'img/apartament-03.jpg'
+      'img/apartment-01.jpg',
+      'img/apartment-02.jpg',
+      'img/apartment-03.jpg',
+      'img/apartment-011.jpg',
+      'img/apartment-022.jpg',
+      'img/apartment-033.jpg'
     ],
     isFavorite: true,
     isPremium: true,
@@ -188,12 +188,12 @@ export const offers: IOffer[] = [
     },
     id: 4,
     images: [
-      'img/apartament-01.jpg',
-      'img/apartament-02.jpg',
-      'img/apartament-03.jpg',
-      'img/apartament-01.jpg',
-      'img/apartament-02.jpg',
-      'img/apartament-03.jpg'
+      'img/apartment-01.jpg',
+      'img/apartment-02.jpg',
+      'img/apartment-03.jpg',
+      'img/apartment-011.jpg',
+      'img/apartment-022.jpg',
+      'img/apartment-033.jpg'
     ],
     isFavorite: false,
     isPremium: false,

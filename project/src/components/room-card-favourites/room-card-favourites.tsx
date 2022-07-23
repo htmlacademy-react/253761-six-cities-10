@@ -7,6 +7,8 @@ type RoomCardFavouritesProps = {
 };
 
 function RoomCardFavourites({ offer }: RoomCardFavouritesProps): JSX.Element {
+  const ratingPercent: number = offer.rating / 5 * 100;
+
   return (
     <article className="favorites__card place-card">
       {offer.isPremium &&
@@ -33,7 +35,7 @@ function RoomCardFavourites({ offer }: RoomCardFavouritesProps): JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: '100%'}}></span>
+            <span style={{width: `${ratingPercent}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

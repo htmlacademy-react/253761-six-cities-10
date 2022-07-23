@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import IOffer from '../../interfaces/IOffer';
+import cn from 'classnames';
 
 import RoomForm from '../../components/room-form/room-form';
 import NotFound from '../not-found/not-found';
@@ -14,6 +15,14 @@ function Room({ offers }: RoomRtype): JSX.Element {
   if (!room) {
     return <NotFound />;
   }
+
+  const btnFavouritesClasses = {
+    'property__bookmark-button': true,
+    'property__bookmark-button--active': room.isFavorite,
+    'button': true
+  };
+
+  const ratingPercent: number = room.rating / 5 * 100;
 
   return (
     <div className="page">
@@ -50,24 +59,11 @@ function Room({ offers }: RoomRtype): JSX.Element {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/room.jpg" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-02.jpg" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-03.jpg" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/studio-01.jpg" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio" />
-              </div>
+              {room.images.map((src) => (
+                <div className="property__image-wrapper" key={src}>
+                  <img className="property__image" src={src} />
+                </div>
+              ))}
             </div>
           </div>
           <div className="property__container container">
@@ -80,7 +76,7 @@ function Room({ offers }: RoomRtype): JSX.Element {
                 <h1 className="property__name">
                   { room.title }
                 </h1>
-                <button className="property__bookmark-button button" type="button">
+                <button className={cn(btnFavouritesClasses)} type="button">
                   <svg className="property__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark"></use>
                   </svg>
@@ -89,7 +85,7 @@ function Room({ offers }: RoomRtype): JSX.Element {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: '80%'}}></span>
+                  <span style={{width: `${ratingPercent}%`}}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">{ room.rating }</span>
@@ -112,36 +108,11 @@ function Room({ offers }: RoomRtype): JSX.Element {
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
-                  <li className="property__inside-item">
-                    Wi-Fi
-                  </li>
-                  <li className="property__inside-item">
-                    Washing machine
-                  </li>
-                  <li className="property__inside-item">
-                    Towels
-                  </li>
-                  <li className="property__inside-item">
-                    Heating
-                  </li>
-                  <li className="property__inside-item">
-                    Coffee machine
-                  </li>
-                  <li className="property__inside-item">
-                    Baby seat
-                  </li>
-                  <li className="property__inside-item">
-                    Kitchen
-                  </li>
-                  <li className="property__inside-item">
-                    Dishwasher
-                  </li>
-                  <li className="property__inside-item">
-                    Cabel TV
-                  </li>
-                  <li className="property__inside-item">
-                    Fridge
-                  </li>
+                  {room.goods.map((good) => (
+                    <li className="property__inside-item" key={good}>
+                      {good}
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div className="property__host">
@@ -214,7 +185,8 @@ function Room({ offers }: RoomRtype): JSX.Element {
                       <b className="place-card__price-value">&euro;80</b>
                       <span className="place-card__price-text">&#47;&nbsp;night</span>
                     </div>
-                    <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
+                    <div>{room.isFavorite}</div>
+                    <button className={cn(btnFavouritesClasses)} type="button">
                       <svg className="place-card__bookmark-icon" width="18" height="19">
                         <use xlinkHref="#icon-bookmark"></use>
                       </svg>
