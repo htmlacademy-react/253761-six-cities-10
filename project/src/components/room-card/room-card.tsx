@@ -11,7 +11,7 @@ function RoomCard({ offer, changeActiveCard }: RoomCardProps): JSX.Element {
   return (
     <article
       className="cities__card place-card"
-      onMouseOver={() => { changeActiveCard(offer.id); }}
+      onMouseOver={() => changeActiveCard(offer.id) }
     >
       {offer.premium &&
         <div className="place-card__mark">

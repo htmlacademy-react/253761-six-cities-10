@@ -11,7 +11,7 @@ type RoomRtype = {
 function Room({ offers }: RoomRtype): JSX.Element {
   const id = Number(useParams().id);
   const room = offers.find((item) => item.id === id);
-  if (room === undefined) {
+  if (!room) {
     return <NotFound />;
   }
 
