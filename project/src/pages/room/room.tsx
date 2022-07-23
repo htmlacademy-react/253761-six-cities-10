@@ -72,13 +72,13 @@ function Room({ offers }: RoomRtype): JSX.Element {
           </div>
           <div className="property__container container">
             <div className="property__wrapper">
-              {room.premium &&
+              {room.isPremium &&
               <div className="property__mark">
                 <span>Premium</span>
               </div>}
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  { room.name }
+                  { room.title }
                 </h1>
                 <button className="property__bookmark-button button" type="button">
                   <svg className="property__bookmark-icon" width="31" height="33">
@@ -96,13 +96,13 @@ function Room({ offers }: RoomRtype): JSX.Element {
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  { room.category }
+                  { room.type }
                 </li>
                 <li className="property__feature property__feature--bedrooms">
                   { room.bedrooms } Bedrooms
                 </li>
                 <li className="property__feature property__feature--adults">
-                  Max { room.maxPeople } adults
+                  Max { room.maxAdults } adults
                 </li>
               </ul>
               <div className="property__price">

@@ -13,13 +13,13 @@ function RoomCard({ offer, changeActiveCard }: RoomCardProps): JSX.Element {
       className="cities__card place-card"
       onMouseOver={() => changeActiveCard(offer.id) }
     >
-      {offer.premium &&
+      {offer.isPremium &&
         <div className="place-card__mark">
           <span>Premium</span>
         </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={`offer/${offer.id}`}>
-          <img className="place-card__image" src={offer.mainImageSrc} width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src={offer.previewImage} width="260" height="200" alt="Place image" />
         </Link>
       </div>
       <div className="place-card__info">
@@ -44,9 +44,9 @@ function RoomCard({ offer, changeActiveCard }: RoomCardProps): JSX.Element {
         </div>
 
         <h2 className="place-card__name">
-          <Link to={`offer/${offer.id}`}>{offer.name}</Link>
+          <Link to={`offer/${offer.id}`}>{offer.title}</Link>
         </h2>
-        <p className="place-card__type">{offer.category}</p>
+        <p className="place-card__type">{offer.type}</p>
       </div>
     </article>
   );
