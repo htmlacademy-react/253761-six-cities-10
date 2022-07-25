@@ -1,7 +1,9 @@
 import IOffer from '../../interfaces/IOffer';
+import { cities } from '../../mocks/cities';
 
 import RoomCardList from '../../components/room-card-list/room-card-list';
 import Header from '../../components/header/header';
+import Map from '../../components/map/map';
 
 type MainProps = {
   offers: IOffer[]
@@ -75,7 +77,7 @@ function Main({ offers }: MainProps): JSX.Element {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map city={cities[0]} />
             </div>
           </div>
         </div>
