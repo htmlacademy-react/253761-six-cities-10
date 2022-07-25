@@ -77,7 +77,7 @@ function Main({ offers }: MainProps): JSX.Element {
               </div>
             </section>
             <div className="cities__right-section">
-              <Map city={cities[0]} />
+              <Map city={cities[0]} offers={offers} />
             </div>
           </div>
         </div>
