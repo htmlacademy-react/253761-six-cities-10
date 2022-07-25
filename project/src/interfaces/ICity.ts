@@ -1,8 +1,8 @@
 interface ICity {
   title: string,
-  lat: number,
-  lng: number,
-  zoom: 17
+  latitude: number,
+  longitude: number,
+  zoom: number
 }
 
 export default ICity;
