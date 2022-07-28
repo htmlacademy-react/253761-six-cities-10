@@ -1,5 +1,7 @@
 import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 
+const FORM_MIN_LENGTH = 50;
+
 function RoomForm() {
   const [formData, setFormData] = useState({
     rating: '',
@@ -17,7 +19,7 @@ function RoomForm() {
   };
 
   const checkSubmitDisabled = () => {
-    if (formData.rating.length > 0 && formData.review.length >= 5) {
+    if (formData.rating.length && formData.review.length >= FORM_MIN_LENGTH) {
       setSubmitDisabled(false);
     } else {
       setSubmitDisabled(true);
