@@ -8,7 +8,7 @@ type RoomCardListFavouritesProps = {
 
 function RoomCardListFavourites({ offers }: RoomCardListFavouritesProps): JSX.Element {
   const offersFavourites = offers.filter((item) =>
-    item.favourite === true
+    item.isFavorite === true
   );
 
   return (

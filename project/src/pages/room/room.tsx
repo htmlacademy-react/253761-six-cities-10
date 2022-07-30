@@ -1,8 +1,10 @@
 import { useParams } from 'react-router-dom';
 import IOffer from '../../interfaces/IOffer';
+import cn from 'classnames';
 
 import RoomForm from '../../components/room-form/room-form';
 import NotFound from '../not-found/not-found';
+import Header from '../../components/header/header';
 
 type RoomRtype = {
   offers: IOffer[]
@@ -11,76 +13,44 @@ type RoomRtype = {
 function Room({ offers }: RoomRtype): JSX.Element {
   const id = Number(useParams().id);
   const room = offers.find((item) => item.id === id);
-  if (room === undefined) {
+  if (!room) {
     return <NotFound />;
   }
 
+  const btnFavouritesClasses = {
+    'property__bookmark-button': true,
+    'property__bookmark-button--active': room.isFavorite,
+    'button': true
+  };
+
+  const ratingPercent: number = room.rating / 5 * 100;
+
   return (
     <div className="page">
-      <header className="header">
-        <div className="container">
-          <div className="header__wrapper">
-            <div className="header__left">
-              <a className="header__logo-link" href="main.html">
-                <img className="header__logo" src="img/logo.svg" width="81" height="41" />
-              </a>
-            </div>
-            <nav className="header__nav">
-              <ul className="header__nav-list">
-                <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                    <span className="header__favorite-count">3</span>
-                  </a>
-                </li>
-                <li className="header__nav-item">
-                  <a className="header__nav-link" href="#">
-                    <span className="header__signout">Sign out</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/room.jpg" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-02.jpg" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-03.jpg" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/studio-01.jpg" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio" />
-              </div>
+              {room.images.map((src) => (
+                <div className="property__image-wrapper" key={src}>
+                  <img className="property__image" src={src} />
+                </div>
+              ))}
             </div>
           </div>
           <div className="property__container container">
             <div className="property__wrapper">
-              {room.premium &&
+              {room.isPremium &&
               <div className="property__mark">
                 <span>Premium</span>
               </div>}
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  { room.name }
+                  { room.title }
                 </h1>
-                <button className="property__bookmark-button button" type="button">
+                <button className={cn(btnFavouritesClasses)} type="button">
                   <svg className="property__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark"></use>
                   </svg>
@@ -89,20 +59,20 @@ function Room({ offers }: RoomRtype): JSX.Element {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: '80%'}}></span>
+                  <span style={{width: `${ratingPercent}%`}}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">{ room.rating }</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  { room.category }
+                  { room.type }
                 </li>
                 <li className="property__feature property__feature--bedrooms">
                   { room.bedrooms } Bedrooms
                 </li>
                 <li className="property__feature property__feature--adults">
-                  Max { room.maxPeople } adults
+                  Max { room.maxAdults } adults
                 </li>
               </ul>
               <div className="property__price">
@@ -112,36 +82,11 @@ function Room({ offers }: RoomRtype): JSX.Element {
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
-                  <li className="property__inside-item">
-                    Wi-Fi
-                  </li>
-                  <li className="property__inside-item">
-                    Washing machine
-                  </li>
-                  <li className="property__inside-item">
-                    Towels
-                  </li>
-                  <li className="property__inside-item">
-                    Heating
-                  </li>
-                  <li className="property__inside-item">
-                    Coffee machine
-                  </li>
-                  <li className="property__inside-item">
-                    Baby seat
-                  </li>
-                  <li className="property__inside-item">
-                    Kitchen
-                  </li>
-                  <li className="property__inside-item">
-                    Dishwasher
-                  </li>
-                  <li className="property__inside-item">
-                    Cabel TV
-                  </li>
-                  <li className="property__inside-item">
-                    Fridge
-                  </li>
+                  {room.goods.map((good) => (
+                    <li className="property__inside-item" key={good}>
+                      {good}
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div className="property__host">
@@ -214,7 +159,8 @@ function Room({ offers }: RoomRtype): JSX.Element {
                       <b className="place-card__price-value">&euro;80</b>
                       <span className="place-card__price-text">&#47;&nbsp;night</span>
                     </div>
-                    <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
+                    <div>{room.isFavorite}</div>
+                    <button className={cn(btnFavouritesClasses)} type="button">
                       <svg className="place-card__bookmark-icon" width="18" height="19">
                         <use xlinkHref="#icon-bookmark"></use>
                       </svg>
